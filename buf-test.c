@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include <string.h>
+#include <stdint.h>
 
 int main(int argc, char **argv) {
 	char *buf = NULL;
@@ -38,6 +39,13 @@ int main(int argc, char **argv) {
 	buf_free(&buf);
 	assert(buf_len(buf) == 0);
 	assert(buf == NULL);
+
+	buf_free(&buf);
+	assert(buf == NULL);
+
+	buf_append((uint8_t **)&buf, &((uint8_t[]){0x39, 0x40}), 2);
+	buf_append((uint16_t **)&buf, &((uint16_t[]){0x1234}), 1);
+	assert(((uint32_t*)buf)[0] == 0x12344039);
 
 	return 0;
 }
