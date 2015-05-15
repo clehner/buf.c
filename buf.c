@@ -58,7 +58,7 @@ bool _buf_alloc(void **_buf, size_t size) {
 bool _buf_put(void **_buf, const void *data, size_t len) {
 	if (!_buf_alloc(_buf, len))
 		return false;
-	struct buf *buf = buf_unbox(_buf);
+	struct buf *buf = buf_unbox(*_buf);
 	memcpy(buf->data, data, len);
 	buf->len = len;
 	return true;
@@ -72,7 +72,7 @@ bool _buf_append(void **_buf, const void *data, size_t len) {
 			return false;
 		*_buf = buf_box(buf);
 	}
-	memcpy(buf->data + buf->len, data, len);
+	memcpy((char *)buf->data + buf->len, data, len);
 	buf->len += len;
 	return true;
 }

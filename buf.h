@@ -6,8 +6,8 @@
 
 #define buf_len(buf) _buf_len(buf, sizeof *buf)
 #define buf_alloc(buf, size) _buf_alloc(buf, size * sizeof **buf)
-#define buf_put(buf, data, len) _buf_put(buf, data, len * sizeof **buf)
-#define buf_append(buf, data, len) _buf_append(buf, data, len * sizeof **buf)
+#define buf_put(buf, data, len) _buf_put((void **)buf, data, len * sizeof **buf)
+#define buf_append(buf, data, len) _buf_append((void **)buf, data, len * sizeof **buf)
 
 void buf_free(void **);
 void buf_truncate(void *);
