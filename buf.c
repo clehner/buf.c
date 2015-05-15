@@ -17,9 +17,10 @@ static inline struct buf *buf_unbox(void *buf) {
 	return buf ? &((struct buf *)buf)[-1] : NULL;
 }
 
-void buf_free(void **_buf) {
-	if (*_buf) {
-		free(*_buf);
+void _buf_free(void **_buf) {
+	struct buf *buf = buf_unbox(*_buf);
+	if (buf) {
+		free(buf);
 		*_buf = NULL;
 	}
 }
