@@ -1,0 +1,10 @@
+{
+	"name": "buf",
+	"version": "1.0.0",
+	"repo": "clehner/buf.c",
+	"description": "minimal buffer",
+	"keywords": ["buffer", "structure"],
+	"author": "Charles Lehner",
+	"license": "MIT",
+	"src": ["buf.c", "buf.h"]
+}
