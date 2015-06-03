@@ -49,6 +49,12 @@ bool buf_append(TYPE **, const void *data, size_t size);
 Write the given data at the end of the buffer, expanding the buffer if
 necessary. Return true on success, false on failure.
 
+## Similar projects
+
+[stb](https://github.com/nothings/stb)'s
+[stretchy_buffer](https://github.com/nothings/stb/blob/master/stretchy_buffer.h)
+does the same thing
+
 ## License
 
 MIT
